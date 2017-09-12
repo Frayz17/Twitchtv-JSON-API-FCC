@@ -6,27 +6,76 @@ font-family: 'Noto Serif', serif;*/
 
 body {
 	font-family: 'Noto Sans', sans-serif;
-	color: #333333;
+	/*font-size: 18px;*/
+	color: #ffffff;
+	background-color: #000075;
+	background-image: url('../img/background_texture.png');
 }
 
 .main {
 	max-width: 500px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 50px;
+	margin-top: 150px;
 }
 
 .main-title {
 	font-family: 'Noto Serif', serif;
 	text-transform: uppercase;
 	font-size: 44px;
+	margin: 0px;
+	background-color: #502527;
+	/*padding-left: 25px;
+	padding-top: 20px;
+	padding-bottom: 20px;*/
+	padding: 20px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 }
 
 .main-channels {
-	border: 1px solid #888888;
+	border: 4px solid #502527;
 	padding: 15px;
+	padding-top: 5px;
+	background-color: #70475C;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 .main-channels-box {
 	margin-top: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #8A6879;
+}
+
+.main-channels-box-name, .main-channels-box-desc, .main-channels-box-state {
+	margin: 0px;
+}
+
+.main-channels-box-name {
+	font-weight: 400;
+	float: left;
+	width: 50%;
+	font-size: 24px;
+}
+
+.main-channels-box-state {
+	float: right;
+	width: 18px;
+	height: 18px;
+	border-radius: 9px;
+	margin-top: 17px;
+	margin-right: 40px;
+}
+.online{
+	background-color: #86CB92;
+}
+.offline{
+	background-color: #F45B69;
+}
+
+.main-channels-box-desc {
+	font-size: 14px;
+	margin-left: 20px;
+	width: 50%;
 }
