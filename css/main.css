@@ -1,0 +1,32 @@
+/*<style>
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif:700');
+</style>
+/*font-family: 'Noto Sans', sans-serif;
+font-family: 'Noto Serif', serif;*/
+
+body {
+	font-family: 'Noto Sans', sans-serif;
+	color: #333333;
+}
+
+.main {
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+}
+
+.main-title {
+	font-family: 'Noto Serif', serif;
+	text-transform: uppercase;
+	font-size: 44px;
+}
+
+.main-channels {
+	border: 1px solid #888888;
+	padding: 15px;
+}
+
+.main-channels-box {
+	margin-top: 15px;
+}
