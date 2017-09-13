@@ -112,31 +112,84 @@ const SAMPLE_API_RESP = [
 ]
 
 
-console.log(SAMPLE_API_RESP);
-// console.log(document.getElementsByClassName('main-channels-box-state'));
+// console.log(SAMPLE_API_RESP);
+
+// Perform information from JSON raw to twitch channels desk
 var mainChannels = document.getElementById('main-channels-id');
 var mainChannelName = document.getElementsByClassName("main-channels-box-name");
 var channelState = document.getElementsByClassName('main-channels-box-state');
+var mainChannelDescription = document.getElementsByClassName('main-channels-box-desc');
 
 for (var i = 0; i < SAMPLE_API_RESP.length; i++) {
 	mainChannels.appendChild(addChannelRaw());
 	// console.log(channelState);
-    mainChannelName[i].textContent = SAMPLE_API_RESP[i].stream.display_name;
-	if (SAMPLE_API_RESP[i].stream === null) {
-		channelState[i].className += " offline";		
-	} else {
-		channelState[i].className += " online"
-	}
+  
+  if (SAMPLE_API_RESP[i].error == "Not Found") {
+  	mainChannelDescription[i].textContent = SAMPLE_API_RESP[i].message;
+  	channelState[i].setAttribute("data-state", "notexist");
+  } else if (SAMPLE_API_RESP[i].stream === null) {
+			var channelBoxDiv = document.getElementsByClassName("main-channels-box");
+			mainChannelName[i].textContent = SAMPLE_API_RESP[i].display_name;
+			channelState[i].className += " offline";
+			channelState[i].setAttribute("data-state", "offline");	
+		} else {
+			mainChannelName[i].textContent = SAMPLE_API_RESP[i].stream.display_name;
+			channelState[i].className += " online";
+			channelState[i].setAttribute("data-state", "online");
+			mainChannelDescription[i].textContent = SAMPLE_API_RESP[i].stream.status;
+		}
+
+
 }
-// var mainChannels = addChannel();
+
+// Add filter functinality to buttjns
+var btnAll = document.getElementById("button-all");
+var btnOn = document.getElementById("button-on");
+var btnOff = document.getElementById("button-off");
+
+btnAll.addEventListener("click", function() {
+	var channelBoxDiv = document.getElementsByClassName("main-channels-box");
+
+	for (var i = 0; i < channelBoxDiv.length; i++) {
+		if (channelBoxDiv[i].style.display === 'none') {
+		channelBoxDiv[i].style.display = 'block';
+		}
+	}	
+});
+
+btnOn.addEventListener("click", function() {
+	var channelBoxDiv = document.getElementsByClassName("main-channels-box");
+
+	for (var i = 0; i < channelBoxDiv.length; i++) {
+		if (channelState[i].getAttribute("data-state") === 'online') {
+			channelBoxDiv[i].style.display = 'block';
+		}
+		else {
+			channelBoxDiv[i].style.display = 'none';
+		}
+	}	
+});
+
+btnOff.addEventListener("click", function() {
+	var channelBoxDiv = document.getElementsByClassName("main-channels-box");
+
+	for (var i = 0; i < channelBoxDiv.length; i++) {
+		if (channelState[i].getAttribute("data-state") === 'offline') {
+			channelBoxDiv[i].style.display = 'block';
+		}
+		else {
+			channelBoxDiv[i].style.display = 'none';
+		}
+	}	
+});
 
 function addChannelRaw() {
 	var channelBoxDiv = document.createElement("div");
 	channelBoxDiv.className = "main-channels-box";
-	channelBoxDiv.innerHTML = 
-		'<h3 class="main-channels-box-name" id="channel-name">NameOfChannel</h3>' +
+	channelBoxDiv.innerHTML += 
+		'<h3 class="main-channels-box-name" id="channel-name"></h3>' +
 		'<p class="main-channels-box-state" id="channel-state"></p>' +
-		'<p class="main-channels-box-desc" id="channel-description">Description of the channel</p>';
+		'<p class="main-channels-box-desc" id="channel-description">channel is offline.</p>';
 
 	return channelBoxDiv;
 }
