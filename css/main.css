@@ -24,7 +24,7 @@ body {
 	text-transform: uppercase;
 	font-size: 44px;
 	margin: 0px;
-	background-color: #502527;
+	background-color: #4F244A;
 	/*padding-left: 25px;
 	padding-top: 20px;
 	padding-bottom: 20px;*/
@@ -34,18 +34,50 @@ body {
 }
 
 .main-channels {
-	border: 4px solid #502527;
+	border: 4px solid #4F244A;
 	padding: 15px;
-	padding-top: 5px;
-	background-color: #70475C;
+	padding-top: 0px;
+	background-color: #6A4E70;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
+}
+
+.main-channels-search{
+	margin-top: 8px;
+	margin-left: auto;
+	margin-right: auto;
+	/*width: 150px;*/
+	text-align: center;
+
+}
+
+.main-channels-search-button {
+	display: inline-block;
+	/*width: 80px;*/
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-left: 20px;
+	background-color: #393975;
+	border-radius: 5px;
+	cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  color: #ffffff;
+}
+.main-channels-search-button:focus {
+ background-color: #2F2F60;
+}
+.main-channels-search-button:hover {
+ background-color: #2F2F60;
 }
 
 .main-channels-box {
 	margin-top: 15px;
 	padding-bottom: 15px;
-	border-bottom: 1px solid #8A6879;
+	border-bottom: 1px solid #856E8A;
 }
 
 .main-channels-box-name, .main-channels-box-desc, .main-channels-box-state {
