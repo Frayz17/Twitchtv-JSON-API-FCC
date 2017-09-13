@@ -112,8 +112,6 @@ const SAMPLE_API_RESP = [
 ]
 
 
-// console.log(SAMPLE_API_RESP);
-
 // Perform information from JSON raw to twitch channels desk
 var mainChannels = document.getElementById('main-channels-id');
 var mainChannelName = document.getElementsByClassName("main-channels-box-name");
@@ -122,25 +120,26 @@ var mainChannelDescription = document.getElementsByClassName('main-channels-box-
 
 for (var i = 0; i < SAMPLE_API_RESP.length; i++) {
 	mainChannels.appendChild(addChannelRaw());
-	// console.log(channelState);
   
   if (SAMPLE_API_RESP[i].error == "Not Found") {
   	mainChannelDescription[i].textContent = SAMPLE_API_RESP[i].message;
   	channelState[i].setAttribute("data-state", "notexist");
+
   } else if (SAMPLE_API_RESP[i].stream === null) {
 			var channelBoxDiv = document.getElementsByClassName("main-channels-box");
 			mainChannelName[i].textContent = SAMPLE_API_RESP[i].display_name;
 			channelState[i].className += " offline";
 			channelState[i].setAttribute("data-state", "offline");	
+
 		} else {
 			mainChannelName[i].textContent = SAMPLE_API_RESP[i].stream.display_name;
 			channelState[i].className += " online";
 			channelState[i].setAttribute("data-state", "online");
 			mainChannelDescription[i].textContent = SAMPLE_API_RESP[i].stream.status;
+
 		}
-
-
 }
+
 
 // Add filter functinality to buttjns
 var btnAll = document.getElementById("button-all");
@@ -182,6 +181,8 @@ btnOff.addEventListener("click", function() {
 		}
 	}	
 });
+
+
 
 function addChannelRaw() {
 	var channelBoxDiv = document.createElement("div");
